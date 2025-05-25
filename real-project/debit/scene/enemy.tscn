@@ -1,0 +1,89 @@
+[gd_scene load_steps=13 format=3 uid="uid://dguvb3qh2877f"]
+
+[ext_resource type="Script" uid="uid://rdkdigmyx4bp" path="res://scene/enemy.gd" id="1_kqmod"]
+[ext_resource type="Texture2D" uid="uid://34rgvuu8nc30" path="res://assets/Ennemies/Alien1.png" id="1_vgurf"]
+[ext_resource type="Texture2D" uid="uid://c08appvaiocc4" path="res://assets/Ennemies/Alien2.png" id="2_kqmod"]
+[ext_resource type="Texture2D" uid="uid://bs67fk2lswi4g" path="res://assets/Ennemies/Alien3.png" id="3_qhqle"]
+[ext_resource type="Texture2D" uid="uid://bsbjjp6ndhxii" path="res://assets/Ennemies/Alien4.png" id="4_pw261"]
+[ext_resource type="Texture2D" uid="uid://c6hdddego2lk8" path="res://assets/Ennemies/Alien5.png" id="5_rs6j2"]
+[ext_resource type="Texture2D" uid="uid://b5h4x6luqlsj8" path="res://assets/Ennemies/Alien6.png" id="6_0n578"]
+[ext_resource type="Texture2D" uid="uid://dlt3efkwsnyr6" path="res://assets/Ennemies/Alien7.png" id="7_sj55t"]
+[ext_resource type="Texture2D" uid="uid://ctig3pr0s86sl" path="res://assets/Ennemies/Alien8.png" id="8_un1pk"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jntje"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_vgurf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_kqmod")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_qhqle")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_pw261")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_rs6j2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_0n578")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_sj55t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_un1pk")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ysr33"]
+radius = 7.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yvcfn"]
+radius = 143.136
+
+[node name="enemy" type="CharacterBody2D"]
+z_index = 1
+script = ExtResource("1_kqmod")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1, 5)
+sprite_frames = SubResource("SpriteFrames_jntje")
+animation = &"walk"
+autoplay = "idle"
+frame_progress = 0.151162
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 12)
+shape = SubResource("CircleShape2D_ysr33")
+debug_color = Color(0.0800972, 0.557667, 0.885288, 0.42)
+
+[node name="move_limite" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="move_limite"]
+position = Vector2(-2, 12)
+shape = SubResource("CircleShape2D_yvcfn")
+debug_color = Color(0.958509, 0.173871, 0.281118, 0.42)
+
+[node name="cible" type="Marker2D" parent="."]
+position = Vector2(-3, 12)
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="area_entered" from="move_limite" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="move_limite" to="." method="_on_move_limite_area_entered"]
+[connection signal="body_entered" from="move_limite" to="." method="_on_move_limite_body_entered"]
+[connection signal="body_exited" from="move_limite" to="." method="_on_move_limite_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

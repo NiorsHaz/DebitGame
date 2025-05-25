@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bnevl1dpgnnyp"]
+
+[ext_resource type="Script" uid="uid://cj2882mfmd7rr" path="res://script/gun.gd" id="1_h5mb1"]
+[ext_resource type="Texture2D" uid="uid://daxj6utxxpy61" path="res://assets/Items/Keyboard.png" id="1_h8bng"]
+
+[node name="gun" type="Node2D"]
+script = ExtResource("1_h5mb1")
+
+[node name="Keyboard" type="Sprite2D" parent="."]
+position = Vector2(10, -3)
+texture = ExtResource("1_h8bng")
+
+[node name="Vodybe" type="Marker2D" parent="."]
+position = Vector2(24, -5)

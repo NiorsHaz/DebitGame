@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://dfopwl34ew4d7"]
+
+[ext_resource type="Script" uid="uid://bod50yujixsv8" path="res://script/alienship.gd" id="1_7u7ak"]
+[ext_resource type="Texture2D" uid="uid://7i8y30xttim2" path="res://assets/Ennemies/SpaceShips2x2as1.png" id="2_8gywg"]
+[ext_resource type="Texture2D" uid="uid://mlhtpgyycumu" path="res://assets/Ennemies/SpaceShips2x2as2.png" id="3_6nt2n"]
+[ext_resource type="Texture2D" uid="uid://dhvkhfnpkckyl" path="res://assets/Ennemies/SpaceShips2x2as3.png" id="4_7u7ak"]
+[ext_resource type="Texture2D" uid="uid://xnfiqvxvicd1" path="res://assets/Ennemies/SpaceShips2x3.png" id="5_rgssq"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6fcpm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_8gywg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_6nt2n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_7u7ak")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_rgssq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 9.0
+}]
+
+[node name="alienship" type="Node2D"]
+z_index = 1
+script = ExtResource("1_7u7ak")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_6fcpm")
+autoplay = "default"
+frame_progress = 0.0223387
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(1, 7)
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

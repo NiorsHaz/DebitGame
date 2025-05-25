@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://cgjbep4qx8066"]
+
+[ext_resource type="Texture2D" uid="uid://coce8ys8r6dwp" path="res://assets/Items/AmmoLetters1.png" id="1_qwydi"]
+[ext_resource type="Script" uid="uid://gio2yvx5h1tq" path="res://script/bullet.gd" id="1_xw300"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xw300"]
+size = Vector2(12, 11)
+
+[node name="bullet" type="Area2D"]
+script = ExtResource("1_xw300")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -4)
+shape = SubResource("RectangleShape2D_xw300")
+
+[node name="AmmoLetters1" type="Sprite2D" parent="."]
+position = Vector2(-1, -4)
+texture = ExtResource("1_qwydi")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Line2D" type="Line2D" parent="."]
+position = Vector2(-1, -1)
+points = PackedVector2Array(-3, -3)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

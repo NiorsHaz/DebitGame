@@ -1,0 +1,87 @@
+[gd_scene load_steps=10 format=3 uid="uid://0xumjdenkcos"]
+
+[ext_resource type="PackedScene" uid="uid://b0fk68o7nps7g" path="res://scene/player.tscn" id="1_5kiuu"]
+[ext_resource type="PackedScene" uid="uid://dfopwl34ew4d7" path="res://scene/alienship.tscn" id="2_dbls1"]
+[ext_resource type="Texture2D" uid="uid://cns64kbvnspr2" path="res://assets/Overall/Heads/Debitsx8.png" id="2_qpk70"]
+[ext_resource type="Texture2D" uid="uid://lnp7us3eh2pq" path="res://assets/Sprites/Battle-Scene.png" id="3_33cqm"]
+[ext_resource type="Texture2D" uid="uid://buc6p43g8vjlf" path="res://assets/Overall/Heads/Debitsx9.png" id="3_ll5lq"]
+[ext_resource type="Texture2D" uid="uid://bbg38qnl2yigx" path="res://assets/Overall/Heads/Debitsx6.png" id="4_17rxn"]
+[ext_resource type="Texture2D" uid="uid://vhf0qse6xidg" path="res://assets/Overall/Heads/Debitsx7.png" id="5_qpk70"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ym5sv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_qpk70")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ll5lq")
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_17rxn")
+}],
+"loop": true,
+"name": &"full",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_qpk70")
+}],
+"loop": true,
+"name": &"mid",
+"speed": 5.0
+}]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_5kiuu"]
+distance = -67.0
+
+[node name="Game" type="Node2D"]
+
+[node name="player" parent="." instance=ExtResource("1_5kiuu")]
+z_index = 1
+position = Vector2(-83, 69)
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="player"]
+offset_left = -158.0
+offset_top = -322.0
+offset_right = -118.0
+offset_bottom = -282.0
+
+[node name="healthBar" type="AnimatedSprite2D" parent="player/TextureProgressBar"]
+position = Vector2(156, 195)
+sprite_frames = SubResource("SpriteFrames_ym5sv")
+animation = &"death"
+autoplay = "death"
+frame_progress = 0.0416436
+
+[node name="Camera2D" type="Camera2D" parent="player"]
+position = Vector2(183, -9)
+scale = Vector2(-2.65665, -23.7029)
+zoom = Vector2(1.5, 1.5)
+limit_left = -1000
+limit_top = -1000
+limit_right = 1000
+limit_bottom = 1000
+position_smoothing_enabled = true
+
+[node name="decor" type="StaticBody2D" parent="."]
+position = Vector2(-31, 28)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="decor"]
+z_index = 1
+position = Vector2(-57, 61)
+rotation = -0.00751866
+shape = SubResource("WorldBoundaryShape2D_5kiuu")
+
+[node name="alienship" parent="." instance=ExtResource("2_dbls1")]
+position = Vector2(432, 23)
+
+[node name="Battle-scene" type="Sprite2D" parent="."]
+position = Vector2(133, 28)
+texture = ExtResource("3_33cqm")

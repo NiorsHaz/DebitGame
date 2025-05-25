@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://cefenh4fsrlcc"]
+
+[ext_resource type="Script" uid="uid://baeh1rx2f8782" path="res://scene/bullet_enemy.gd" id="1_8jiu5"]
+[ext_resource type="Texture2D" uid="uid://q211xpsm3b0i" path="res://assets/Ennemies/EnemyBullet3.png" id="1_r5avf"]
+
+[node name="bullet_enemy" type="Area2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_8jiu5")
+
+[node name="EnemyBullet3" type="Sprite2D" parent="."]
+position = Vector2(3, -1)
+texture = ExtResource("1_r5avf")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-9, -3, -8, 2, -5, 4, 0, 6, 3, 7, 6, 6, 11, 4, 13, 2, 15, -1, 13, -4, 10, -7, 7, -7, 3, -8, -2, -7, -5, -7)
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
