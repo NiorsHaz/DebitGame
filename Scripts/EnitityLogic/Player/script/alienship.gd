@@ -47,6 +47,7 @@ func _process(delta: float) -> void:
 			alien_timer.wait_time = 2.0
 			alien_timer.paused = false
 			count = 0 # Reset spawn count for the new wave
+			GameGlobal.set_vague(vague)
 			
 			if alien_killed % 10 == 0 and alien_killed != 0:
 				wait_time = max(0.2, wait_time - 0.1)

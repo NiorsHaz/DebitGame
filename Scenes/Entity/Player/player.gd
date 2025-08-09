@@ -5,7 +5,7 @@ var looking_at : float
 
 @export var SPEED = 100
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta) -> void:
 	var directionx : float
 	var directiony : float
 	if Input.is_anything_pressed() && Input.get_vector("left","right","up","down"):

@@ -22,4 +22,4 @@ func _process(delta: float) -> void:
 			$healthBar.play("death")
 
 func hurtBySomething(damage : int) -> void:
-	value = player.health * 105 / player.max_health
+	value = (player.health + damage) * 100 / player.max_health

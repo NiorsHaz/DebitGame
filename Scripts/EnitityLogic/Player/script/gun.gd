@@ -13,7 +13,7 @@ func _ready() -> void:
 	player.death.connect(cannotShoot)
 	reload_audio.autoplay = false
 
-func _process(delta: float) -> void:
+func _process(_delta) -> void:
 	if GameManager.action_fight == true:
 		var  mouse_position=get_global_mouse_position()
 		look_at(mouse_position)

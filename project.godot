@@ -20,6 +20,8 @@ config/windows_native_icon="res://Assets/Debits1.ico"
 
 GameManager="*res://Scripts/Autoloads/game_manager.gd"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
+GameGlobal="*res://Scripts/Autoloads/game-global.gd"
+Utilities="*res://Scripts/Autoloads/utilities.gd"
 
 [dialogue_manager]
 

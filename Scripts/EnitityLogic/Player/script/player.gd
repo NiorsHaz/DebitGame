@@ -4,6 +4,7 @@ extends CharacterBody2D
 signal hurt
 signal death
 
+@onready var alienship : Node = get_node("/root/Game/alienship")
 const SPEED = 200.0
 const JUMP_VELOCITY = -400.0
 var health = 100
@@ -15,9 +16,10 @@ func _physics_process(delta: float) -> void:
 		if health<=0:
 			animated_sprite.play("death")
 			$gun.visible = false
+			#save_score(alienship.alien_killed,13)
 			await animated_sprite.animation_finished
 			death.emit()
-			
+			return 
 			#game.get_tree().paused=true
 		if not is_on_floor():
 			velocity += get_gravity() * delta
@@ -60,5 +62,5 @@ func _physics_process(delta: float) -> void:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 	move_and_slide()
  
-func hurtByEnnemy(damage : int):
+func hurtByEnnemy(_damage):
 	hurt.emit(5)

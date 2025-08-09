@@ -10,11 +10,12 @@ func _ready() -> void:
 	var balloon : BaseGameDialogueBalloon = balloon_scene.instantiate()
 	add_child(balloon)
 	balloon.start(load("res://Util/Dialogues/nasi_dialogues.dialogue"), "start")
-	
 
-func _process(delta: float) -> void:
+func _process(_delta) -> void:
 	if GameManager.action_fight == true && audio.playing == false:
 		audio.play()
 
 func game_over():
+	GameGlobal.save_score()
 	GameManager.game_over()
+	

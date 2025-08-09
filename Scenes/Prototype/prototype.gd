@@ -1,6 +1,6 @@
 extends Node2D
 
-func _process(delta: float) -> void:
+func _process(_delta) -> void:
 	if GameManager.start_game == true && $StartGame2.visible == false:
 		$StartGame2.activate_me()
 		

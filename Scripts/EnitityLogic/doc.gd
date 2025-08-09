@@ -1,6 +1,6 @@
 extends Node2D
 
-signal start
+
 
 @onready var label = $InteractibleLabel
 var balloon_scene = preload("res://Util/Dialogues/balloon.tscn")

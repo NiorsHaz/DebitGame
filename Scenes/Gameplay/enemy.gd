@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Ennemy
 
 signal dying
 
@@ -7,7 +8,6 @@ var move=true
 const bullet_enemy=preload("res://Scenes/Gameplay/bullet_enemy.tscn")
 
 @onready var player =get_node("/root/Game/player")
-@onready var bullet =get_node("/root/Game/bullet")
 @onready var move_limite: Area2D = $move_limite
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
@@ -17,10 +17,9 @@ var interval_shoot : float = 1.0
 
 
 
-func _physics_process(delta):
+func _physics_process(delta: float):
 	if get_node("/root/Game/player") && player.health > 0:
 		var direction = global_position.direction_to(player.global_position)
-		var player_in_range = move_limite.get_overlapping_bodies()
 		cible.look_at(player.global_position)
 			
 		if not is_on_floor():
@@ -50,7 +49,7 @@ func _on_move_limite_body_entered(body: Node2D) -> void:
 		velocity.x=0
 		move=false
 
-func _on_move_limite_body_exited(body: Node2D) -> void:
+func _on_move_limite_body_exited(_body) -> void:
 	move=true
 	
 func enemy_fire():

@@ -5,7 +5,7 @@ const MAX_POINTS: int = 2000
 @onready var curve : Curve2D = Curve2D.new()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta) -> void:
 	curve.add_point(get_parent().position)
 	if curve.get_baked_points().size() > MAX_POINTS:
 		curve.remove_point(0)

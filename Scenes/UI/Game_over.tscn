@@ -41,8 +41,27 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 96
 text = "GAME OVER"
 
-[node name="Button" type="Button" parent="CanvasLayer/Panel/VBoxContainer"]
+[node name="ScoreBoard" type="HBoxContainer" parent="CanvasLayer/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Alien killed" type="Label" parent="CanvasLayer/Panel/VBoxContainer/ScoreBoard"]
+layout_mode = 2
+text = "Alien killed :"
+
+[node name="Vagues" type="Label" parent="CanvasLayer/Panel/VBoxContainer/ScoreBoard"]
+layout_mode = 2
+text = "Vagues :"
+
+[node name="Restart" type="Button" parent="CanvasLayer/Panel/VBoxContainer"]
+layout_mode = 2
+text = "Restart
+"
+
+[node name="MainMenu" type="Button" parent="CanvasLayer/Panel/VBoxContainer"]
 layout_mode = 2
 text = "Main Menu"
 
-[connection signal="pressed" from="CanvasLayer/Panel/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Panel/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="CanvasLayer/Panel/VBoxContainer/MainMenu" to="." method="_on_button_pressed"]

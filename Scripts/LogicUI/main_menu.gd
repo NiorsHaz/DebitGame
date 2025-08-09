@@ -3,7 +3,7 @@ extends Control
 var start:bool = false
 var quit:bool = false
 
-func _process(delta: float) -> void:
+func _process(_delta) -> void:
 	if $Click.playing == false && start == true:
 		get_tree().change_scene_to_file("res://Scenes/Prototype/prototype.tscn")
 	elif $Click.playing == false && quit == true:
