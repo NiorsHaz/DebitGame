@@ -12,13 +12,14 @@ config_version=5
 
 config/name="D-Bit"
 run/main_scene="res://Scenes/UI/intro.tscn"
-config/features=PackedStringArray("4.4", "GL Compatibility")
+config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="uid://ouxnb76wioom"
 config/windows_native_icon="res://Assets/Debits1.ico"
 
 [autoload]
 
 GameManager="*res://Scripts/Autoloads/game_manager.gd"
+ApiHandler="*res://Scripts/Autoloads/api_manager.gd"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 
 [dialogue_manager]

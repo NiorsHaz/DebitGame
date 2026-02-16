@@ -2,6 +2,12 @@ extends Control
 
 var start:bool = false
 var quit:bool = false
+var config: ApiConfig
+
+func _ready() -> void:
+	var res = await ApiHandler.api_get("/users")
+	
+	print(['ready data: ', res])
 
 func _process(delta: float) -> void:
 	if $Click.playing == false && start == true:
