@@ -7,6 +7,7 @@
 size = Vector2(12, 11)
 
 [node name="bullet" type="Area2D"]
+scale = Vector2(0.23973106, 0.23973106)
 script = ExtResource("1_xw300")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -19,7 +20,8 @@ rotation = 1.5708
 texture = ExtResource("2_hmo2u")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.7
+wait_time = 0.5
+autostart = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

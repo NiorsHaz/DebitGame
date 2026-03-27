@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://djc12fyh7fqb7"]
+
+[ext_resource type="Script" uid="uid://d0cbnam7go5fp" path="res://Scripts/EnitityLogic/Gun/gun.gd" id="1_xcw64"]
+[ext_resource type="Texture2D" uid="uid://beu6mdkwwlpiv" path="res://Assets/Sprites/Guns/gun.png" id="2_qgn5g"]
+[ext_resource type="AudioStream" uid="uid://dix17b4ahoe44" path="res://Assets/Sounds/GunShot.mp3" id="3_deyni"]
+[ext_resource type="AudioStream" uid="uid://d3d87u1le3sey" path="res://Assets/Sounds/ReloadGun.ogg" id="4_h3r21"]
+
+[node name="hand_gun" type="Node2D"]
+script = ExtResource("1_xcw64")
+fire_rate = 0.05
+fire_damage = 5
+
+[node name="Gun" type="Sprite2D" parent="."]
+position = Vector2(5, -2)
+texture = ExtResource("2_qgn5g")
+flip_h = true
+
+[node name="Vodybe" type="Marker2D" parent="."]
+position = Vector2(13, -5)
+
+[node name="GunShot" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_deyni")
+
+[node name="ReloadGun" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_h3r21")
+
+[connection signal="finished" from="ReloadGun" to="." method="_on_reload_gun_finished"]

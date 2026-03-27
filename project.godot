@@ -18,9 +18,9 @@ config/windows_native_icon="res://Assets/Debits1.ico"
 
 [autoload]
 
-GameManager="*res://Scripts/Autoloads/game_manager.gd"
-ApiHandler="*res://Scripts/Autoloads/api_manager.gd"
-DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
+GameManager="res://Scripts/Autoloads/game_manager.gd"
+ApiHandler="res://Scripts/Autoloads/api_manager.gd"
+DialogueManager="res://addons/dialogue_manager/dialogue_manager.gd"
 
 [dialogue_manager]
 
@@ -48,6 +48,11 @@ folder_colors={
 "res://Scenes/Prototype/": "gray",
 "res://addons/": "red"
 }
+
+[global_group]
+
+player=""
+floor=""
 
 [input]
 

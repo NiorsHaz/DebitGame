@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://bsogcrh3tx48i"]
+
+[ext_resource type="PackedScene" uid="uid://dbomwlbax7kod" path="res://Scenes/Entity/Player/player 2.0.tscn" id="1_g1stx"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_g1stx"]
+distance = -2.0
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.1182845, 0.18391901, 0.26431596, 1)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." groups=["floor"]]
+position = Vector2(0, 98)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(396, 366)
+shape = SubResource("WorldBoundaryShape2D_g1stx")
+
+[node name="Scene" type="Node2D" parent="."]
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_g1stx")]
+position = Vector2(336, 409)

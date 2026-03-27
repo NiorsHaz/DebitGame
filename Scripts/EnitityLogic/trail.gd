@@ -14,7 +14,7 @@ func _process(delta: float) -> void:
 func stop() -> void:
 	set_process(false)
 	var tw : Tween = get_tree().create_tween()
-	tw.tween_property(self, "modulate:a", 0.0, 3.0)
+	tw.tween_property(self, "modulate:a", 0.0, 1.0)
 	await tw.finished
 	queue_free()
 

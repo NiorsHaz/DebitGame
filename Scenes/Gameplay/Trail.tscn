@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://cn8sdod4yb28" path="res://Scripts/EnitityLogic/trail.gd" id="1_8mvac"]
 
 [sub_resource type="Curve" id="Curve_hun42"]
-_data = [Vector2(0.00199203, 0.285798), 0.0, 0.0, 0, 0, Vector2(0.930279, 0.680888), 1.76037, 0.0, 0, 0]
-point_count = 2
+_data = [Vector2(0.0033557117, 0.024556518), 0.0, 0.0, 0, 0, Vector2(0.8791946, 0.18417454), 0.0, 0.0, 0, 0, Vector2(0.98657715, 0.14870381), 1.76037, 0.0, 0, 0]
+point_count = 3
 
 [sub_resource type="Gradient" id="Gradient_8mvac"]
 colors = PackedColorArray(0.137255, 0.486275, 0.733333, 0, 0.137255, 0.486275, 0.733333, 0.580392)
