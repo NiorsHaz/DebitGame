@@ -20,8 +20,10 @@ position = Vector2(13, -5)
 
 [node name="GunShot" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_deyni")
+volume_db = -35.0
 
 [node name="ReloadGun" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_h3r21")
+volume_db = -35.0
 
 [connection signal="finished" from="ReloadGun" to="." method="_on_reload_gun_finished"]
