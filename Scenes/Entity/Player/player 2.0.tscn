@@ -1,9 +1,10 @@
-[gd_scene load_steps=21 format=3 uid="uid://dbomwlbax7kod"]
+[gd_scene load_steps=22 format=3 uid="uid://dbomwlbax7kod"]
 
 [ext_resource type="Script" uid="uid://co3fop88a0hfc" path="res://Scenes/Entity/Player/player_2.0.gd" id="1_6tb2d"]
 [ext_resource type="Texture2D" uid="uid://c0s0syapfpasb" path="res://Assets/Sprites/Debit 2.0/Debit-run.png" id="1_p7iga"]
 [ext_resource type="Texture2D" uid="uid://ck0y0wisejmfa" path="res://Assets/Sprites/Debit 2.0/Debit-idle.png" id="2_6tb2d"]
 [ext_resource type="Shader" uid="uid://ie1ksgfthj3q" path="res://Scenes/Prototype/Shades.tres" id="2_acsrd"]
+[ext_resource type="Script" uid="uid://co38lrvqtokvm" path="res://Scripts/EnitityLogic/Player/camera_2d.gd" id="5_lk6fp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lk6fp"]
 shader = ExtResource("2_acsrd")
@@ -121,7 +122,7 @@ size = Vector2(13, 21)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6tb2d"]
 size = Vector2(13, 2)
 
-[node name="CharacterBody2D" type="CharacterBody2D" groups=["player"]]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 z_index = 2
 collision_layer = 5
 collision_mask = 5
@@ -148,3 +149,6 @@ position = Vector2(-5, 8)
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -40)
 zoom = Vector2(2.5, 2.5)
+script = ExtResource("5_lk6fp")
+shakeStrength = 8.0
+shakeFade = 20.0

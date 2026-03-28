@@ -6,8 +6,8 @@ const SPEED = 20
 var move=true
 const bullet_enemy=preload("res://Scenes/Gameplay/bullet_enemy.tscn")
 
-@onready var player =get_node("/root/Game/player")
-@onready var bullet =get_node("/root/Game/bullet")
+@onready var player =get_tree().get_first_node_in_group("player")
+
 @onready var move_limite: Area2D = $move_limite
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
@@ -18,7 +18,7 @@ var interval_shoot : float = 1.0
 
 
 func _physics_process(delta):
-	if get_node("/root/Game/player") && player.health > 0:
+	if get_tree().get_first_node_in_group("player") && player.health > 0:
 		var direction = global_position.direction_to(player.global_position)
 		var player_in_range = move_limite.get_overlapping_bodies()
 		cible.look_at(player.global_position)

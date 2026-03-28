@@ -16,7 +16,7 @@ func _process(delta: float) -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
-	if body.name == "player":
+	if body.name.to_lower() == "player":
 		queue_free()
 		body.health=body.health-damage
 		body.hurtByEnnemy(damage)

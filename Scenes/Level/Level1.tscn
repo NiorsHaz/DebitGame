@@ -1,7 +1,8 @@
-[gd_scene load_steps=27 format=4 uid="uid://bsogcrh3tx48i"]
+[gd_scene load_steps=28 format=4 uid="uid://bsogcrh3tx48i"]
 
 [ext_resource type="PackedScene" uid="uid://dbomwlbax7kod" path="res://Scenes/Entity/Player/player 2.0.tscn" id="1_g1stx"]
 [ext_resource type="Texture2D" uid="uid://btq33doh3syev" path="res://Assets/Sprites/Tilemaps/D-bit Tilemap.png" id="2_8ux1l"]
+[ext_resource type="PackedScene" uid="uid://dfopwl34ew4d7" path="res://Scenes/Gameplay/alienship.tscn" id="2_gl8jy"]
 [ext_resource type="Texture2D" uid="uid://bxdywnj0qdgl8" path="res://Assets/Sprites/Decor/yellow_car.png" id="3_mddlf"]
 [ext_resource type="Texture2D" uid="uid://3go3o0g52jv3" path="res://Assets/Sprites/Decor/VendingMachine.png" id="4_b2j2l"]
 [ext_resource type="Shader" uid="uid://dtbkektqrpfb0" path="res://Assets/Shader/darken.tres" id="5_7axx8"]
@@ -244,6 +245,9 @@ z_index = 2
 [node name="CharacterBody2D" parent="Scene" instance=ExtResource("1_g1stx")]
 z_index = 1
 position = Vector2(336, 409)
+
+[node name="alienship" parent="Scene" instance=ExtResource("2_gl8jy")]
+position = Vector2(433, 184)
 
 [node name="Decor" type="Node2D" parent="Scene"]
 

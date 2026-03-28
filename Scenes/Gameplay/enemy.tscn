@@ -55,6 +55,9 @@ radius = 143.136
 
 [node name="enemy" type="CharacterBody2D"]
 z_index = 1
+scale = Vector2(0.5, 0.5)
+collision_layer = 5
+collision_mask = 5
 script = ExtResource("1_kqmod")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -85,8 +88,8 @@ position = Vector2(-3, 12)
 autostart = true
 
 [connection signal="tree_exited" from="." to="." method="_on_tree_exited"]
-[connection signal="area_entered" from="move_limite" to="." method="_on_move_limite_area_entered"]
 [connection signal="area_entered" from="move_limite" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="move_limite" to="." method="_on_move_limite_area_entered"]
 [connection signal="body_entered" from="move_limite" to="." method="_on_move_limite_body_entered"]
 [connection signal="body_exited" from="move_limite" to="." method="_on_move_limite_body_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

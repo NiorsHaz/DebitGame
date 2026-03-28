@@ -7,8 +7,8 @@ extends Node2D
 @export var max_x := 700.0
 const ENEMY= preload("res://Scenes/Gameplay/enemy.tscn")
 @onready var alien_timer: Timer = $AlienTimer
-@onready var vague_number: Label = $CanvasLayer/GameManager/HBoxContainer/vagueNumber
-@onready var alien_kill: Label = $CanvasLayer/GameManager/HBoxContainer/AlienKilled
+#@onready var vague_number: Label = $CanvasLayer/GameManager/HBoxContainer/vagueNumber
+#@onready var alien_kill: Label = $CanvasLayer/GameManager/HBoxContainer/AlienKilled
 @onready var current_position = self.global_position
 
 var count = 0
@@ -38,7 +38,7 @@ func spawn_mob():
 	target_position = Vector2(new_x, global_position.y)
 
 func _process(delta: float) -> void:
-	if GameManager.action_fight == false: is_moving = true
+	if GameManager.action_fight == true: is_moving = true
 	else: 
 		is_moving = false
 		if alien_killed >= limit:
@@ -59,8 +59,8 @@ func _process(delta: float) -> void:
 			is_moving = false
 		
 		# Update UI
-		vague_number.text = "Vague : " + str(vague)
-		alien_kill.text = "Alien killed : " + str(alien_killed)
+		#vague_number.text = "Vague : " + str(vague)
+		#alien_kill.text = "Alien killed : " + str(alien_killed)
 
 func _on_timer_timeout() -> void:
 	if not is_moving:
