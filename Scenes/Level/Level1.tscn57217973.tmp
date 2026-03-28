@@ -346,3 +346,17 @@ texture = ExtResource("9_gl8jy")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Backgrounds"]
 environment = SubResource("Environment_60y7f")
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="Backgrounds"]
+visible = false
+position = Vector2(223, 216)
+color = Color(4.813075e-07, 0.3778936, 0.3603076, 1)
+energy = 0.1
+blend_mode = 2
+range_z_min = -600
+range_z_max = 800
+shadow_enabled = true
+shadow_color = Color(0.24278957, 0.13092008, 0.11375234, 0)
+
+[node name="PointLight2D" type="PointLight2D" parent="Backgrounds"]
+visible = false
