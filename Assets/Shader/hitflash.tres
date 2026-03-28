@@ -1,0 +1,74 @@
+[gd_resource type="VisualShader" load_steps=5 format=3 uid="uid://cujfgon46d0ol"]
+
+[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_r0a35"]
+parameter_name = "ColorParameter"
+default_value_enabled = true
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_0en2m"]
+input_name = "color"
+
+[sub_resource type="VisualShaderNodeBooleanParameter" id="VisualShaderNodeBooleanParameter_bhsan"]
+parameter_name = "BooleanParameter"
+default_value_enabled = true
+
+[sub_resource type="VisualShaderNodeIf" id="VisualShaderNodeIf_2b84x"]
+default_input_values = [0, 0.0, 1, 1.0, 2, 1e-05, 3, Vector3(0, 0, 0), 4, Vector3(0, 0, 0), 5, Vector3(0, 0, 0)]
+
+[resource]
+code = "shader_type canvas_item;
+render_mode blend_mix;
+
+uniform bool BooleanParameter = false;
+uniform vec4 ColorParameter : source_color = vec4(1.000000, 1.000000, 1.000000, 1.000000);
+
+
+
+void vertex() {
+// BooleanParameter:4
+	bool n_out4p0 = BooleanParameter;
+
+
+// ColorParameter:2
+	vec4 n_out2p0 = ColorParameter;
+
+
+// Input:3
+	vec4 n_out3p0 = COLOR;
+
+
+	vec3 n_out5p0;
+// If:5
+	float n_in5p1 = 1.00000;
+	float n_in5p2 = 0.00001;
+	if(abs((n_out4p0 ? 1.0 : 0.0) - n_in5p1) < n_in5p2)
+	{
+		n_out5p0 = vec3(n_out2p0.xyz);
+	}
+	else if((n_out4p0 ? 1.0 : 0.0) < n_in5p1)
+	{
+		n_out5p0 = vec3(n_out3p0.xyz);
+	}
+	else
+	{
+		n_out5p0 = vec3(n_out3p0.xyz);
+	}
+
+
+// Output:0
+	COLOR.rgb = n_out5p0;
+
+
+}
+"
+mode = 1
+flags/light_only = false
+nodes/vertex/0/position = Vector2(500, 140)
+nodes/vertex/2/node = SubResource("VisualShaderNodeColorParameter_r0a35")
+nodes/vertex/2/position = Vector2(-20, 160)
+nodes/vertex/3/node = SubResource("VisualShaderNodeInput_0en2m")
+nodes/vertex/3/position = Vector2(-20, 340)
+nodes/vertex/4/node = SubResource("VisualShaderNodeBooleanParameter_bhsan")
+nodes/vertex/4/position = Vector2(-20, 20)
+nodes/vertex/5/node = SubResource("VisualShaderNodeIf_2b84x")
+nodes/vertex/5/position = Vector2(240, 100)
+nodes/vertex/connections = PackedInt32Array(4, 0, 5, 0, 5, 0, 0, 2, 2, 0, 5, 3, 3, 0, 5, 4, 3, 0, 5, 5)

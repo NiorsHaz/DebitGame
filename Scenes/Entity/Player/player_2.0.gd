@@ -12,10 +12,12 @@ var score : int = 0
 var current : String
 @onready var animated_sprite: AnimatedSprite2D = $Sprite2D
 @onready var scores: Label = $Control/VBoxContainer/Label 
+@onready var hit_animation: AnimationPlayer = $AnimationPlayer
 
 var gun: PackedScene = preload("res://Scenes/Entity/Entity/hand_gun.tscn")
 
 func _ready() -> void:
+	animated_sprite.material.set_shader_parameter("active", false)
 	current = scores.text
 	get_first_gun()
 
@@ -79,6 +81,8 @@ func _physics_process(delta: float) -> void:
  
 func hurtByEnnemy(damage : int):
 	health -= damage
+	$Camera2D.trigger_shake(0.5)
+	hit_animation.play("hitflash")
 	hurt.emit(damage)
 
 func get_first_gun():

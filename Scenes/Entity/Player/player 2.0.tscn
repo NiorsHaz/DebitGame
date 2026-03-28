@@ -1,9 +1,9 @@
-[gd_scene load_steps=31 format=3 uid="uid://dbomwlbax7kod"]
+[gd_scene load_steps=34 format=3 uid="uid://dbomwlbax7kod"]
 
 [ext_resource type="Script" uid="uid://co3fop88a0hfc" path="res://Scenes/Entity/Player/player_2.0.gd" id="1_6tb2d"]
 [ext_resource type="Texture2D" uid="uid://c0s0syapfpasb" path="res://Assets/Sprites/Debit 2.0/Debit-run.png" id="1_p7iga"]
 [ext_resource type="Texture2D" uid="uid://ck0y0wisejmfa" path="res://Assets/Sprites/Debit 2.0/Debit-idle.png" id="2_6tb2d"]
-[ext_resource type="Shader" uid="uid://ie1ksgfthj3q" path="res://Scenes/Prototype/Shades.tres" id="2_acsrd"]
+[ext_resource type="Shader" uid="uid://dwbmu2enlubb" path="res://Assets/Shader/hitflash.gdshader" id="2_e8tly"]
 [ext_resource type="Script" uid="uid://co38lrvqtokvm" path="res://Scripts/EnitityLogic/Player/camera_2d.gd" id="5_lk6fp"]
 [ext_resource type="Texture2D" uid="uid://c0ptymrcpoop2" path="res://Assets/Sprites/Debit/UI/HealthBar.png" id="6_8ixrf"]
 [ext_resource type="Script" uid="uid://cle3ygndw5di7" path="res://Scripts/LogicUI/healthBar2.gd" id="6_hvq5u"]
@@ -14,7 +14,10 @@
 [ext_resource type="Texture2D" uid="uid://dceh7ywxclhd8" path="res://Assets/Sprites/Debit/Overall/Heads/Debits2.png" id="12_hlqsp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lk6fp"]
-shader = ExtResource("2_acsrd")
+resource_local_to_scene = true
+shader = ExtResource("2_e8tly")
+shader_parameter/active = true
+shader_parameter/flash_color = Color(1, 1, 1, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6tb2d"]
 atlas = ExtResource("1_p7iga")
@@ -167,6 +170,43 @@ animations = [{
 [sub_resource type="LabelSettings" id="LabelSettings_e8tly"]
 font_size = 8
 
+[sub_resource type="Animation" id="Animation_e8tly"]
+resource_name = "hitflash"
+length = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/active")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_axuxk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/active")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vrjmc"]
+_data = {
+&"RESET": SubResource("Animation_axuxk"),
+&"hitflash": SubResource("Animation_e8tly")
+}
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 z_index = 2
 collision_layer = 5
@@ -237,3 +277,8 @@ autoplay = "full"
 layout_mode = 2
 text = "Alien killed : "
 label_settings = SubResource("LabelSettings_e8tly")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_vrjmc")
+}

@@ -12,6 +12,12 @@ func apply_shake():
 	current_strength = shakeStrength
 	await get_tree().create_timer(1.5).timeout
 	can_shake = true 
+	
+func trigger_shake(time: float):
+	can_shake = false
+	current_strength = shakeStrength
+	await get_tree().create_timer(time).timeout
+	can_shake = true 
 
 func _process(delta: float) -> void:
 	if Input.is_action_pressed("fire") and can_shake:

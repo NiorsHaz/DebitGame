@@ -29,7 +29,7 @@ func _on_body_entered(body: Node2D) -> void:
 		queue_free()
 	elif 'enemy' in body.get_groups():
 		ennemy_killed.emit()
-		body.queue_free()
+		body.got_hit()
 		queue_free()
 	else:
 		#alienship.alien_killed=alienship.alien_killed+1
