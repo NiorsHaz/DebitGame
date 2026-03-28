@@ -15,6 +15,7 @@ func _ready() -> void:
 	get_first_gun()
 
 func _physics_process(delta: float) -> void:
+	set_collision_mask_value(3, true)
 	#if GameManager.action_fight == true:
 	if health<=0:
 		#animated_sprite.play("death")
@@ -24,6 +25,8 @@ func _physics_process(delta: float) -> void:
 		
 		#game.get_tree().paused=true
 	if not is_on_floor():
+		if Input.is_action_pressed("down"):
+			set_collision_mask_value(3, false)
 		velocity += get_gravity() * delta
 		#if health>50:
 		#print("fall")
@@ -33,11 +36,14 @@ func _physics_process(delta: float) -> void:
 		
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+		if Input.is_action_pressed("down"):
+			set_collision_mask_value(3, false)
+		else:
+			velocity.y = JUMP_VELOCITY
 		#if velocity.y < 0 and !is_on_floor():
 			#animated_sprite.play("jump")
 		#if health<=50:
 			#animated_sprite.play("jump_mid")
-		velocity.y = JUMP_VELOCITY
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("left", "right")

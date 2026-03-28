@@ -53,6 +53,7 @@ folder_colors={
 
 player=""
 floor=""
+platform=""
 
 [input]
 

@@ -21,7 +21,7 @@ func _on_timer_timeout() -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
-	if "player" in body.get_groups():
+	if "player" in body.get_groups() or "platform" in body.get_groups():
 		pass
 	elif "floor" in body.get_groups():
 		queue_free()
