@@ -53,7 +53,7 @@ radius = 7.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_yvcfn"]
 radius = 143.136
 
-[node name="enemy" type="CharacterBody2D"]
+[node name="enemy" type="CharacterBody2D" groups=["enemy"]]
 z_index = 1
 scale = Vector2(0.5, 0.5)
 collision_layer = 5

@@ -5,8 +5,6 @@
 
 [node name="bullet_enemy" type="Area2D"]
 scale = Vector2(0.5, 0.5)
-collision_layer = 2
-collision_mask = 2
 script = ExtResource("1_8jiu5")
 
 [node name="EnemyBullet3" type="Sprite2D" parent="."]

@@ -11,7 +11,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if $Click.playing == false && start == true:
-		get_tree().change_scene_to_file("res://Scenes/Prototype/prototype.tscn")
+		get_tree().change_scene_to_file("res://Scenes/Level/Level1.tscn")
 	elif $Click.playing == false && quit == true:
 		get_tree().quit()
 

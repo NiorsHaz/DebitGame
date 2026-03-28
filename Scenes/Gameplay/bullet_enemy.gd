@@ -16,11 +16,16 @@ func _process(delta: float) -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
-	if body.name.to_lower() == "player":
+	if "player" in body.get_groups():
+		print("player hit")
 		queue_free()
-		body.health=body.health-damage
 		body.hurtByEnnemy(damage)
-	queue_free()
+	elif "platform" in body.get_groups():
+		pass
+	elif "enemy" in body.get_groups():
+		pass
+	else:
+		queue_free()
 
 
 func _on_timer_timeout() -> void:

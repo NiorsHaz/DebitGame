@@ -1,6 +1,8 @@
 class_name Gun
 extends Node2D
 
+signal gain_point
+
 @onready var vodybe: Marker2D = $Vodybe
 #@onready var shooterInterval = $ShootInterval
 @onready var reload_audio = $ReloadGun
@@ -43,6 +45,7 @@ func shoot():
 	
 	var bullet_instance = BULLET.instantiate()
 	get_tree().root.add_child(bullet_instance)
+	bullet_instance.ennemy_killed.connect(gain_score)
 	bullet_instance.global_position = vodybe.global_position
 	bullet_instance.rotation = rotation
 	#shooterInterval.start()
@@ -59,3 +62,7 @@ func _on_reload_gun_finished() -> void:
 
 func cannotShoot():
 	can_shoot = false
+
+func gain_score():
+	print()
+	gain_point.emit()

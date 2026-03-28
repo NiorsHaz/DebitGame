@@ -1,10 +1,17 @@
-[gd_scene load_steps=22 format=3 uid="uid://dbomwlbax7kod"]
+[gd_scene load_steps=31 format=3 uid="uid://dbomwlbax7kod"]
 
 [ext_resource type="Script" uid="uid://co3fop88a0hfc" path="res://Scenes/Entity/Player/player_2.0.gd" id="1_6tb2d"]
 [ext_resource type="Texture2D" uid="uid://c0s0syapfpasb" path="res://Assets/Sprites/Debit 2.0/Debit-run.png" id="1_p7iga"]
 [ext_resource type="Texture2D" uid="uid://ck0y0wisejmfa" path="res://Assets/Sprites/Debit 2.0/Debit-idle.png" id="2_6tb2d"]
 [ext_resource type="Shader" uid="uid://ie1ksgfthj3q" path="res://Scenes/Prototype/Shades.tres" id="2_acsrd"]
 [ext_resource type="Script" uid="uid://co38lrvqtokvm" path="res://Scripts/EnitityLogic/Player/camera_2d.gd" id="5_lk6fp"]
+[ext_resource type="Texture2D" uid="uid://c0ptymrcpoop2" path="res://Assets/Sprites/Debit/UI/HealthBar.png" id="6_8ixrf"]
+[ext_resource type="Script" uid="uid://cle3ygndw5di7" path="res://Scripts/LogicUI/healthBar2.gd" id="6_hvq5u"]
+[ext_resource type="Texture2D" uid="uid://ctnnyvldiyrre" path="res://Assets/Sprites/Debit/UI/WhiteHealthBarGauge.png" id="7_c87ud"]
+[ext_resource type="Texture2D" uid="uid://hi2li6basmt" path="res://Assets/Sprites/Debit/Overall/Heads/Debits3.png" id="9_e8tly"]
+[ext_resource type="Texture2D" uid="uid://bi78eo8kxweik" path="res://Assets/Sprites/Debit/Overall/Heads/Debits4.png" id="10_axuxk"]
+[ext_resource type="Texture2D" uid="uid://ouxnb76wioom" path="res://Assets/Sprites/Debit/Overall/Heads/Debits1.png" id="11_vrjmc"]
+[ext_resource type="Texture2D" uid="uid://dceh7ywxclhd8" path="res://Assets/Sprites/Debit/Overall/Heads/Debits2.png" id="12_hlqsp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lk6fp"]
 shader = ExtResource("2_acsrd")
@@ -122,6 +129,44 @@ size = Vector2(13, 21)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6tb2d"]
 size = Vector2(13, 2)
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_nrkxj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_e8tly")
+}],
+"loop": true,
+"name": &"critical",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_axuxk")
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_vrjmc")
+}],
+"loop": true,
+"name": &"full",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_hlqsp")
+}],
+"loop": true,
+"name": &"mid",
+"speed": 5.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_e8tly"]
+font_size = 8
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 z_index = 2
 collision_layer = 5
@@ -152,3 +197,43 @@ zoom = Vector2(2.5, 2.5)
 script = ExtResource("5_lk6fp")
 shakeStrength = 8.0
 shakeFade = 20.0
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -160.0
+offset_top = -161.0
+offset_right = 161.0
+offset_bottom = 79.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 30.0
+offset_top = 5.0
+offset_right = 160.0
+offset_bottom = -10.0
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer"]
+layout_mode = 2
+
+[node name="ProgressBar" type="TextureProgressBar" parent="Control/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+texture_under = ExtResource("6_8ixrf")
+texture_progress = ExtResource("7_c87ud")
+tint_progress = Color(0, 0.6739408, 0.23739552, 1)
+script = ExtResource("6_hvq5u")
+
+[node name="healthBar" type="AnimatedSprite2D" parent="Control/VBoxContainer/HBoxContainer/ProgressBar"]
+position = Vector2(-13, 18)
+sprite_frames = SubResource("SpriteFrames_nrkxj")
+animation = &"full"
+autoplay = "full"
+
+[node name="Label" type="Label" parent="Control/VBoxContainer"]
+layout_mode = 2
+text = "Alien killed : "
+label_settings = SubResource("LabelSettings_e8tly")

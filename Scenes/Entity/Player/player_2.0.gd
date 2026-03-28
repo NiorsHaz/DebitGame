@@ -1,27 +1,33 @@
 class_name Player
 extends CharacterBody2D
 
-#signal hurt
+signal hurt
 signal death
 
 const SPEED = 100.0
 const JUMP_VELOCITY = -350.0
-var health = 100
-var max_health = 100
+var health : int = 100
+var max_health : int = 100
+var score : int = 0
+var current : String
 @onready var animated_sprite: AnimatedSprite2D = $Sprite2D
+@onready var scores: Label = $Control/VBoxContainer/Label 
 
 var gun: PackedScene = preload("res://Scenes/Entity/Entity/hand_gun.tscn")
 
 func _ready() -> void:
+	current = scores.text
 	get_first_gun()
 
 func _physics_process(delta: float) -> void:
+	update_score()
 	set_collision_mask_value(3, true)
 	#if GameManager.action_fight == true:
 	if health<=0:
 		#animated_sprite.play("death")
-		$gun.visible = false
-		await animated_sprite.animation_finished
+		#$gun.visible = false
+		get_node("hand_gun").visible = false
+		#await animated_sprite.animation_finished
 		death.emit()
 		
 		#game.get_tree().paused=true
@@ -71,10 +77,19 @@ func _physics_process(delta: float) -> void:
 	#velocity.x = move_toward(velocity.x, 0, SPEED)
 	move_and_slide()
  
-#func hurtByEnnemy(damage : int):
-	#hurt.emit(5)
+func hurtByEnnemy(damage : int):
+	health -= damage
+	hurt.emit(damage)
 
 func get_first_gun():
 	var first = gun.instantiate()
+	first.gain_point.connect(up_score)
 	first.global_position = $GunHandle.position
 	add_child(first)
+
+func up_score():
+	score += 1
+
+func update_score():
+	var changing = current
+	scores.text = changing + " " + str(score)

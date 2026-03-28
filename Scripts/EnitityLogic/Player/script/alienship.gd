@@ -16,6 +16,7 @@ var vague = 0
 var is_moving: bool = false
 var target_position: Vector2
 var wait_time : float = 1.0
+var start_counting : bool = true
 
 var move_speed = 100.0 # Pixels per second
 var rng = RandomNumberGenerator.new()
@@ -28,27 +29,32 @@ func _ready():
 func spawn_mob():
 	var enemy = ENEMY.instantiate()
 	get_tree().root.add_child(enemy)
+	enemy.dying.connect(_on_enemy_died)
 	enemy.global_position = marker.global_position
 	
 	count += 1
-	
+	#print(count)
 	# Set a new horizontal target position, with clamping
 	var offset = rng.randf_range(-150, 150)
 	var new_x = clamp(global_position.x + offset, min_x, max_x)
 	target_position = Vector2(new_x, global_position.y)
 
 func _process(delta: float) -> void:
-	if GameManager.action_fight == true: is_moving = true
-	else: 
-		is_moving = false
+	if GameManager.action_fight == true:
+		var alive = get_alive_enemies()
+			
+		#is_moving = true
 		if alien_killed >= limit:
+			print("next vague")
+			alien_killed = 0
 			limit += 5
 			vague += 1
+			
+			count = 0 # Reset spawn count for the new wave
 			alien_timer.wait_time = 2.0
 			alien_timer.paused = false
-			count = 0 # Reset spawn count for the new wave
 			
-			if alien_killed % 10 == 0 and alien_killed != 0:
+			if limit % 10 == 0:
 				wait_time = max(0.2, wait_time - 0.1)
 		
 		# Smooth movement toward target_position
@@ -58,18 +64,31 @@ func _process(delta: float) -> void:
 		else:
 			is_moving = false
 		
-		# Update UI
-		#vague_number.text = "Vague : " + str(vague)
-		#alien_kill.text = "Alien killed : " + str(alien_killed)
+			# Update UI
+			#vague_number.text = "Vague : " + str(vague)
+			#alien_kill.text = "Alien killed : " + str(alien_killed)
 
 func _on_timer_timeout() -> void:
 	if not is_moving:
-		spawn_mob()
+		var alive = get_alive_enemies()
 
-		if count==limit:
-			alien_timer.paused=true
-		alien_timer.wait_time= wait_time
+		if alive < limit:
+			spawn_mob()
+
+		if count >= limit:
+			alien_timer.paused = true
+
+		alien_timer.wait_time = wait_time
 
 func shuffle():
 	var num_rand = RandomNumberGenerator.new()
 	return num_rand.randf_range(-10, 10)
+
+func get_alive_enemies() -> int:
+	var count := 0
+	for node in get_tree().get_nodes_in_group("enemy"):
+		count += 1
+	return count
+	
+func _on_enemy_died():
+	alien_killed +=1

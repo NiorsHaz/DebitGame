@@ -1,5 +1,7 @@
 extends Area2D
 
+signal ennemy_killed
+
 #@onready var alienship : Node = get_node("/root/Game/alienship")
 var kill : int = 0
 const SPEED : int = 1500
@@ -25,10 +27,14 @@ func _on_body_entered(body: Node2D) -> void:
 		pass
 	elif "floor" in body.get_groups():
 		queue_free()
+	elif 'enemy' in body.get_groups():
+		ennemy_killed.emit()
+		body.queue_free()
+		queue_free()
 	else:
 		#alienship.alien_killed=alienship.alien_killed+1
-		body.queue_free()
-		print(body.get_groups().get(0))
+		#body.queue_free()
+		#print(body.get_groups().get(0))
 		#print(alienship.alien_killed)
 		queue_free()
 

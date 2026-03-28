@@ -97,7 +97,6 @@ metadata/_edit_group_ = true
 script = ExtResource("8_ll5lq")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="alienship/CanvasLayer/GameManager"]
-visible = false
 custom_minimum_size = Vector2(100, 10)
 offset_left = 27.0
 offset_top = 72.0
@@ -123,7 +122,6 @@ parameters/looping = true
 layer = 5
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="ProgressBar" node_paths=PackedStringArray("player")]
-visible = false
 z_index = 1
 offset_left = 112.0
 offset_top = 18.0
