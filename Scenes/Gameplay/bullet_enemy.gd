@@ -17,7 +17,7 @@ func _process(delta: float) -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if "player" in body.get_groups():
-		print("player hit")
+		#print("player hit")
 		queue_free()
 		body.hurtByEnnemy(damage)
 	elif "platform" in body.get_groups():

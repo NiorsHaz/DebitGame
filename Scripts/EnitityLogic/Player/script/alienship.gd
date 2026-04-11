@@ -41,7 +41,7 @@ func spawn_mob():
 
 func _process(delta: float) -> void:
 	if GameManager.action_fight == true:
-		var alive = get_alive_enemies()
+		#var alive = get_alive_enemies()
 			
 		#is_moving = true
 		if alien_killed >= limit:
