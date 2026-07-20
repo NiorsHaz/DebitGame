@@ -76,6 +76,7 @@ func shuffle():
 func got_hit():
 	hitflash.play("hit_flash")
 	$Explosion.emitting = true
+	
 	is_alive = false
 
 func _on_tree_exited() -> void:
