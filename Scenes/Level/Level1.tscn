@@ -1,19 +1,27 @@
-[gd_scene load_steps=29 format=4 uid="uid://bsogcrh3tx48i"]
+[gd_scene load_steps=40 format=4 uid="uid://bsogcrh3tx48i"]
 
 [ext_resource type="PackedScene" uid="uid://dbomwlbax7kod" path="res://Scenes/Entity/Player/player 2.0.tscn" id="1_g1stx"]
 [ext_resource type="Script" uid="uid://bmhvudig1nsdn" path="res://Scenes/Level/level_1.gd" id="1_u04hf"]
 [ext_resource type="Texture2D" uid="uid://btq33doh3syev" path="res://Assets/Sprites/Tilemaps/D-bit Tilemap.png" id="2_8ux1l"]
 [ext_resource type="PackedScene" uid="uid://dfopwl34ew4d7" path="res://Scenes/Gameplay/alienship.tscn" id="2_gl8jy"]
 [ext_resource type="Texture2D" uid="uid://bxdywnj0qdgl8" path="res://Assets/Sprites/Decor/yellow_car.png" id="3_mddlf"]
-[ext_resource type="Texture2D" uid="uid://3go3o0g52jv3" path="res://Assets/Sprites/Decor/VendingMachine.png" id="4_b2j2l"]
 [ext_resource type="Shader" uid="uid://dtbkektqrpfb0" path="res://Assets/Shader/darken.tres" id="5_7axx8"]
 [ext_resource type="Texture2D" uid="uid://bce8x44mn4d46" path="res://Assets/Sprites/Backgrounds/MainBackground.png" id="5_xtiaw"]
-[ext_resource type="Texture2D" uid="uid://bqil8hqfecl6v" path="res://Assets/Sprites/Backgrounds/FrBackground.png" id="6_7axx8"]
-[ext_resource type="Texture2D" uid="uid://c6u3pp805rv8q" path="res://Assets/Sprites/Backgrounds/IBackground.png" id="7_60y7f"]
+[ext_resource type="Texture2D" uid="uid://cf7t7ucab2o6l" path="res://Assets/Sprites/Decor/Banc.png" id="7_4vfpm"]
 [ext_resource type="Texture2D" uid="uid://bcbjmr1w0pwbf" path="res://Assets/Sprites/Backgrounds/Moon.png" id="7_gl8jy"]
 [ext_resource type="Shader" uid="uid://ie1ksgfthj3q" path="res://Scenes/Prototype/Shades.tres" id="7_n1aum"]
+[ext_resource type="Texture2D" uid="uid://byu3e38e8dph4" path="res://Assets/Sprites/Decor/Vending_machine.png" id="7_u04hf"]
 [ext_resource type="Texture2D" uid="uid://b45a3cpcbiiig" path="res://Assets/Sprites/Backgrounds/MBackground.png" id="8_n1aum"]
 [ext_resource type="Texture2D" uid="uid://81or1j5ula82" path="res://Assets/Sprites/Backgrounds/FBackground.png" id="9_gl8jy"]
+[ext_resource type="Texture2D" uid="uid://c8nadmo6u1egt" path="res://Assets/Sprites/Backgrounds/Far_BG.png" id="12_apvep"]
+[ext_resource type="Texture2D" uid="uid://4gr1p07pbnkt" path="res://Assets/Sprites/Backgrounds/BG.png" id="13_apvep"]
+[ext_resource type="Texture2D" uid="uid://b2ol5sjpgwf62" path="res://Assets/Sprites/Decor/House_1.png" id="15_apvep"]
+[ext_resource type="Texture2D" uid="uid://chpfknl2dr505" path="res://Assets/Sprites/Decor/House_2.png" id="16_48txg"]
+[ext_resource type="Texture2D" uid="uid://b8hbsjw6onryw" path="res://Assets/Sprites/Decor/Roof_1.png" id="17_q7v1i"]
+[ext_resource type="Texture2D" uid="uid://bev13dluv7pdf" path="res://Assets/Sprites/Decor/Windowless_garage_2.png" id="18_q7v1i"]
+[ext_resource type="Texture2D" uid="uid://clcwi4q80aiy5" path="res://Assets/Sprites/Decor/Build_1.png" id="19_mr8px"]
+[ext_resource type="Texture2D" uid="uid://48khr6e1sy5o" path="res://Assets/Sprites/Decor/Vespa_2.png" id="19_vpnj2"]
+[ext_resource type="Texture2D" uid="uid://cdlrb8ge862dl" path="res://Assets/Sprites/Decor/Window_flower.png" id="20_apvep"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_g1stx"]
 distance = -2.0
@@ -203,6 +211,15 @@ shader = ExtResource("5_7axx8")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gl8jy"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_apvep"]
+shader = ExtResource("5_7axx8")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_48txg"]
+shader = ExtResource("5_7axx8")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ohtu0"]
+shader = ExtResource("5_7axx8")
+
 [sub_resource type="Environment" id="Environment_60y7f"]
 background_mode = 3
 reflected_light_source = 1
@@ -246,21 +263,22 @@ z_index = 2
 
 [node name="CharacterBody2D" parent="Scene" instance=ExtResource("1_g1stx")]
 z_index = 1
-position = Vector2(281, 290)
-
-[node name="alienship" parent="Scene" instance=ExtResource("2_gl8jy")]
-position = Vector2(433, 184)
+position = Vector2(158, 477)
 
 [node name="Decor" type="Node2D" parent="Scene"]
 
 [node name="BigPlatform" type="TileMapLayer" parent="Scene/Decor" groups=["platform"]]
+visible = false
 material = SubResource("ShaderMaterial_n1aum")
 tile_map_data = PackedByteArray("AAAKAB4AAAAbAAAAAAAKAB0AAAAbAAAAAAAKABwAAAAbAAAAAAAJABsAAAAeAAAAAAAKABsAAAAgAAAAAAALABsAAAAdAAAAAAAMAB4AAAAcAAAAAAAMAB0AAAAcAAAAAAAMABwAAAAcAAAAAAAMABsAAAAcAAAAAAAMABoAAAAbAAAAAAAMABkAAAAbAAAAAAALABgAAAAfAAAAAAAMABgAAAAgAAAAAAANABgAAAAhAAAAAAAKABgAAAAfAAAAAAAOABgAAAAsAAAAAAAPABgAAAAgAAAAAAAQABgAAAAhAAAAAAAJABgAAAAeAAAAAAAPABkAAAAcAAAAAAAPABoAAAAcAAAAAAAPABsAAAAcAAAAAAAPABwAAAAbAAAAAAAPAB0AAAAbAAAAAAAPAB4AAAAbAAAAAAARABgAAAAhAAAAAAASABgAAAAdAAAAAAAGAB4AAAAsAAAAAAAGABwAAAAsAAAAAAAGABoAAAAsAAAAAAAGABgAAAAsAAAAAAAGABYAAAAsAAAAAAAOAB4AAAAsAAAAAAAOABwAAAAsAAAAAAAOABoAAAAsAAAAAAAOABYAAAAsAAAAAAAVAB4AAAAsAAAAAAAVABwAAAAsAAAAAAAVABoAAAAsAAAAAAAVABgAAAAsAAAAAAAVABYAAAAsAAAAAAAdAB4AAAAsAAAAAAAdAB0AAAAtAAAAAAAdABwAAAAsAAAAAAAdABoAAAAsAAAAAAAdABgAAAAsAAAAAAAdABYAAAAsAAAAAAAlAB4AAAAsAAAAAAAlABwAAAAsAAAAAAAlABoAAAAsAAAAAAAlABgAAAAsAAAAAAAlABYAAAAsAAAAAAAtAB4AAAAsAAAAAAAtABwAAAAsAAAAAAAtABoAAAAsAAAAAAAtABgAAAAsAAAAAAAtABYAAAAsAAAAAAAGABUAAAAfAAAAAAAHABUAAAAjAAAAAAAIABUAAAAoAAAAAAAJABUAAAApAAAAAAAKABUAAAAoAAAAAAALABUAAAApAAAAAAAMABUAAAAoAAAAAAANABUAAAAkAAAAAAAOABUAAAAfAAAAAAAPABUAAAAjAAAAAAAQABUAAAAoAAAAAAARABUAAAApAAAAAAASABUAAAAoAAAAAAATABUAAAApAAAAAAAUABUAAAAkAAAAAAAVABUAAAAfAAAAAAAWABUAAAAjAAAA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")
+enabled = false
 tile_set = SubResource("TileSet_f4tjx")
 
 [node name="Platform" type="TileMapLayer" parent="Scene/Decor" groups=["platform"]]
+visible = false
 material = SubResource("ShaderMaterial_n1aum")
 tile_map_data = PackedByteArray("AAAKAB4AAAAbAAAAAAAKAB0AAAAbAAAAAAAKABwAAAAbAAAAAAAJABsAAAAeAAAAAAAKABsAAAAgAAAAAAALABsAAAAdAAAAAAAMAB4AAAAcAAAAAAAMAB0AAAAcAAAAAAAMABwAAAAcAAAAAAAMABsAAAAcAAAAAAAMABoAAAAbAAAAAAAMABkAAAAbAAAAAAALABgAAAAfAAAAAAAMABgAAAAgAAAAAAANABgAAAAhAAAAAAAKABgAAAAfAAAAAAAOABgAAAAhAAAAAAAPABgAAAAgAAAAAAAQABgAAAAhAAAAAAAJABgAAAAeAAAAAAAPABkAAAAcAAAAAAAPABoAAAAcAAAAAAAPABsAAAAcAAAAAAAPABwAAAAbAAAAAAAPAB0AAAAbAAAAAAAPAB4AAAAbAAAAAAARABgAAAAhAAAAAAASABgAAAAdAAAAAAA=")
+enabled = false
 tile_set = SubResource("TileSet_f4tjx")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="Scene/Decor"]
@@ -273,6 +291,7 @@ tile_map_data = PackedByteArray("AAAxACQAAAABAAAAAAAxACMAAAABAAAAAAAxACIAAAABAAA
 tile_set = SubResource("TileSet_b2j2l")
 
 [node name="yellow_car" type="StaticBody2D" parent="Scene/Decor" groups=["platform"]]
+visible = false
 position = Vector2(-64, 48)
 collision_layer = 4
 collision_mask = 4
@@ -286,6 +305,21 @@ position = Vector2(519.5, 414)
 shape = SubResource("RectangleShape2D_b2j2l")
 one_way_collision = true
 
+[node name="Bench" type="StaticBody2D" parent="Scene/Decor" groups=["platform"]]
+position = Vector2(173, 56)
+collision_layer = 4
+collision_mask = 4
+
+[node name="Banc" type="Sprite2D" parent="Scene/Decor/Bench"]
+position = Vector2(519, 418)
+texture = ExtResource("7_4vfpm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Scene/Decor/Bench"]
+position = Vector2(519, 426)
+scale = Vector2(1.3782475, 1.7061826)
+shape = SubResource("RectangleShape2D_b2j2l")
+one_way_collision = true
+
 [node name="VendingM" type="StaticBody2D" parent="Scene/Decor" groups=["platform"]]
 position = Vector2(542, 464)
 collision_layer = 4
@@ -293,12 +327,18 @@ collision_mask = 4
 
 [node name="Sprite2D" type="Sprite2D" parent="Scene/Decor/VendingM"]
 self_modulate = Color(0.8151441, 0.8151441, 0.8151441, 1)
-texture = ExtResource("4_b2j2l")
+position = Vector2(5, -6)
+texture = ExtResource("7_u04hf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Scene/Decor/VendingM"]
-position = Vector2(0, -31)
+position = Vector2(5, -44)
+rotation = 0.00019403217
+scale = Vector2(1.5118608, 1.3242978)
 shape = SubResource("RectangleShape2D_f4tjx")
 one_way_collision = true
+
+[node name="alienship" parent="Scene" instance=ExtResource("2_gl8jy")]
+position = Vector2(433, 184)
 
 [node name="Backgrounds" type="Node2D" parent="."]
 material = SubResource("ShaderMaterial_60y7f")
@@ -323,28 +363,86 @@ texture = ExtResource("7_gl8jy")
 scroll_offset = Vector2(392, 369)
 
 [node name="Sprite2D" type="Sprite2D" parent="Backgrounds/Parallax2D2"]
-texture = ExtResource("6_7axx8")
+position = Vector2(-166, -47)
+texture = ExtResource("12_apvep")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Backgrounds/Parallax2D2"]
+position = Vector2(371, -47)
+texture = ExtResource("12_apvep")
 
 [node name="Parallax2D3" type="Parallax2D" parent="Backgrounds"]
 scroll_scale = Vector2(0.9, 1)
 scroll_offset = Vector2(390, 388)
 
 [node name="Sprite2D" type="Sprite2D" parent="Backgrounds/Parallax2D3"]
-texture = ExtResource("7_60y7f")
+material = SubResource("ShaderMaterial_apvep")
+position = Vector2(-262, -146)
+texture = ExtResource("13_apvep")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Backgrounds/Parallax2D3"]
+material = SubResource("ShaderMaterial_apvep")
+position = Vector2(377, -146)
+texture = ExtResource("13_apvep")
 
 [node name="Parallax2D4" type="Parallax2D" parent="Backgrounds"]
-scroll_scale = Vector2(0.8, 1)
-scroll_offset = Vector2(401, 375)
+scroll_offset = Vector2(386, 365)
 
 [node name="Sprite2D" type="Sprite2D" parent="Backgrounds/Parallax2D4"]
+visible = false
 texture = ExtResource("8_n1aum")
 
+[node name="House2" type="Sprite2D" parent="Backgrounds/Parallax2D4"]
+material = SubResource("ShaderMaterial_48txg")
+position = Vector2(233, 0)
+texture = ExtResource("15_apvep")
+
+[node name="Roof1" type="Sprite2D" parent="Backgrounds/Parallax2D4"]
+material = SubResource("ShaderMaterial_48txg")
+position = Vector2(235, -113)
+texture = ExtResource("17_q7v1i")
+
+[node name="House3" type="Sprite2D" parent="Backgrounds/Parallax2D4"]
+material = SubResource("ShaderMaterial_48txg")
+position = Vector2(-212, 1)
+texture = ExtResource("16_48txg")
+
+[node name="House5" type="Sprite2D" parent="Backgrounds/Parallax2D4"]
+material = SubResource("ShaderMaterial_48txg")
+position = Vector2(-90, 55)
+texture = ExtResource("18_q7v1i")
+
+[node name="House4" type="Sprite2D" parent="Backgrounds/Parallax2D4"]
+material = SubResource("ShaderMaterial_48txg")
+position = Vector2(-13, 1)
+texture = ExtResource("16_48txg")
+
+[node name="Vespa2" type="Sprite2D" parent="Backgrounds/Parallax2D4"]
+material = SubResource("ShaderMaterial_ohtu0")
+position = Vector2(-76, 82)
+texture = ExtResource("19_vpnj2")
+
 [node name="Parallax2D5" type="Parallax2D" parent="Backgrounds"]
-scroll_scale = Vector2(0.7, 1)
 scroll_offset = Vector2(406, 230)
 
 [node name="Sprite2D" type="Sprite2D" parent="Backgrounds/Parallax2D5"]
+visible = false
 texture = ExtResource("9_gl8jy")
+
+[node name="House1" type="Sprite2D" parent="Backgrounds/Parallax2D5"]
+position = Vector2(-296, 170)
+texture = ExtResource("15_apvep")
+
+[node name="Build1" type="Sprite2D" parent="Backgrounds/Parallax2D5"]
+position = Vector2(-199, 207)
+texture = ExtResource("19_mr8px")
+
+[node name="House2" type="Sprite2D" parent="Backgrounds/Parallax2D5"]
+position = Vector2(17, 170)
+texture = ExtResource("16_48txg")
+
+[node name="WindowFlower" type="Sprite2D" parent="Backgrounds/Parallax2D5"]
+position = Vector2(46, 216)
+texture = ExtResource("20_apvep")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Backgrounds"]
 environment = SubResource("Environment_60y7f")

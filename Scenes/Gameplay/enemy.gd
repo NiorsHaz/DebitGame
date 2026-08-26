@@ -61,7 +61,7 @@ func _on_move_limite_body_exited(body: Node2D) -> void:
 func enemy_fire():
 	if is_alive:
 		var bullet_instance=bullet_enemy.instantiate()
-		add_child(bullet_instance)
+		get_tree().root.add_child(bullet_instance)
 		bullet_instance.global_position=cible.global_position
 		bullet_instance.rotation=cible.rotation
 		$Timer.wait_time = shuffle()

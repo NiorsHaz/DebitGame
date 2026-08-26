@@ -11,7 +11,7 @@ var max_health : int = 100
 var score : int = 0
 var current : String
 @onready var animated_sprite: AnimatedSprite2D = $Sprite2D
-@onready var scores: Label = $Control/VBoxContainer/Label 
+@onready var scores: Label = $Camera2D/Control/VBoxContainer/Label
 @onready var hit_animation: AnimationPlayer = $AnimationPlayer
 
 var gun: PackedScene = preload("res://Scenes/Entity/Entity/hand_gun.tscn")

@@ -31,6 +31,7 @@ z_index = 1
 script = ExtResource("1_7u7ak")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_as_relative = false
 sprite_frames = SubResource("SpriteFrames_6fcpm")
 autoplay = "default"
 frame_progress = 0.0223387
