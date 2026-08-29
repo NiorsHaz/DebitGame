@@ -58,7 +58,7 @@ func _physics_process(delta: float) -> void:
 	var direction := Input.get_axis("left", "right")
 	
 
-	if  get_global_mouse_position().x > global_position.x :
+	if get_global_mouse_position().x > global_position.x :
 		animated_sprite.flip_h=false
 	else:
 		animated_sprite.flip_h=true

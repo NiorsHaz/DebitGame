@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dguvb3qh2877f"]
+[gd_scene load_steps=22 format=3 uid="uid://dguvb3qh2877f"]
 
 [ext_resource type="Script" uid="uid://rdkdigmyx4bp" path="res://Scenes/Gameplay/enemy.gd" id="1_kqmod"]
 [ext_resource type="Texture2D" uid="uid://b7xew4vsdprnk" path="res://Assets/Sprites/Debit/Ennemies/Alien1.png" id="1_vgurf"]
@@ -54,6 +54,20 @@ animations = [{
 "name": &"walk",
 "speed": 10.0
 }]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_4gxw7"]
+blend_mode = 1
+light_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_du4oc"]
+offsets = PackedFloat32Array(0, 0.121212125)
+colors = PackedColorArray(0.68431395, 0.9944472, 1.540184e-06, 1, 0.8960416, 0.93091583, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5mqwk"]
+gradient = SubResource("Gradient_du4oc")
+height = 128
+fill = 1
+fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ysr33"]
 radius = 7.0
@@ -114,13 +128,20 @@ animation = &"walk"
 autoplay = "idle"
 frame_progress = 0.151162
 
+[node name="MuzzleGlow" type="Sprite2D" parent="."]
+material = SubResource("CanvasItemMaterial_4gxw7")
+position = Vector2(-6, 10)
+texture = SubResource("GradientTexture2D_5mqwk")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(-1, 12)
 scale = Vector2(2, 2)
 shape = SubResource("CircleShape2D_ysr33")
 debug_color = Color(0.0800972, 0.557667, 0.885288, 0.42)
 
 [node name="move_limite" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="move_limite"]
 position = Vector2(-2, 12)
@@ -141,8 +162,8 @@ libraries = {
 }
 
 [connection signal="tree_exited" from="." to="." method="_on_tree_exited"]
-[connection signal="area_entered" from="move_limite" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_entered" from="move_limite" to="." method="_on_move_limite_area_entered"]
+[connection signal="area_entered" from="move_limite" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="move_limite" to="." method="_on_move_limite_body_entered"]
 [connection signal="body_exited" from="move_limite" to="." method="_on_move_limite_body_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

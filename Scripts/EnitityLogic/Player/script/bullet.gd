@@ -28,8 +28,9 @@ func _on_body_entered(body: Node2D) -> void:
 	elif "floor" in body.get_groups():
 		queue_free()
 	elif 'enemy' in body.get_groups():
+		var push_dir = (body.global_position - global_position).normalized()
 		ennemy_killed.emit()
-		body.got_hit()
+		body.got_hit(push_dir)
 		queue_free()
 	else:
 		#alienship.alien_killed=alienship.alien_killed+1
